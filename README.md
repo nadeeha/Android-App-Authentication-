@@ -8,7 +8,7 @@
 <img src="gif/android_malware_by_deiby_ybied-d3jae40.gif" alt="Animated gif Android Malware" height="382px">
 </p>
 
-<p>I have developed an android app malware detector prediction model in Python which classifies given Apps as malware or benign using the XGBoost Classifier.</p>
+<p>I have developed an android app malware prediction model in Python which classifies given Apps as malware or benign using the XGBoost Classifier.</p>
 
 <h2> :floppy_disk: Project Files Description</h2>
 
