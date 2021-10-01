@@ -1,71 +1,70 @@
 <p align="center"> 
   <img src="img/android-logo-transparent-png-svg-vector-2.png" alt="Android Logo" width="80px" height="80px">
 </p>
-<h1 align="center"> Spam Detector </h1>
+<h1 align="center"> Android App Malware Detection </h1>
 <h3 align="center"> AlmaBetter Verfied Project - <a href="https://www.almabetter.com/"> AlmaBetter School </a> </h5>
 
 <p align="center"> 
 <img src="gif/android_malware_by_deiby_ybied-d3jae40.gif" alt="Animated gif Android Malware" height="382px">
 </p>
 
-<p>I have developed a spam detector program in Python which classifies given emails as spam or ham using the Naive Bayes approach.</p>
+<p>I have developed an android app malware detector prediction model in Python which classifies given Apps as malware or benign using the XGBoost Classifier.</p>
 
 <h2> :floppy_disk: Project Files Description</h2>
 
-<p>This Project includes 3 executable files, 3 text files as well as 2 directories as follows:</p>
-<h4>Executable Files:</h4>
+<p>This Project includes 1 ipynb notebook and 1 input CSV file:</p>
+<h4>IPython Notebook:</h4>
 <ul>
-  <li><b>spam_detector.py</b> - Includes all functions required for classification operations.</li>
-  <li><b>train.py</b> - Uses the functions defined in the spam_detector.py file and generates the model.txt file after execution.</li>
-  <li><b>test.py</b> - Uses the functions defined in the spam_detector.py file and, after execution, generates the result.txt as well as evaluation.txt files.</li>
+  <li><b>TEAM_REALITY_ANDROID_APP_MALWARE_PREDICTION.ipynb</b> - Final IPython Notebook with explanation of steps in markdown.</li>
+  
 </ul>
 
-<h4>Output Files:</h4>
+<h4>Input Files:</h4>
 <ul>
-  <li><b>model.txt</b> - Contains information about the vocabularies of the train set, such as the frequency and conditional probability of each word in Spam and Ham classes.</li>
-  <li><b>result.txt</b> - Contains information about the classified emails of the test set.</li>
-  <li><b>evaluation.txt</b> - Contains evaluation results table as well as Confusion Matrix of Spam and Ham classes.</li>
+  <li><b>ANDROID AUTHENTICITY PREDICTION.csv</b> - Input dataset having information about different apps available in Playstore.</li>
+  
 </ul>
 
-<h4>Source Directories:</h4>
-<ul>
-  <li><b>train directory</b> - Includes all emails for the training phase of the program.</li>
-  <li><b>test directory</b> - Includes all emails for the testing phase of the program.</li>
-</ul>
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2> :book: Naive Bayes</h2>
+<h2> :book: Domain Knowledge</h2>
 
-<p>In machine learning, naive Bayes classifiers are a family of simple "probabilistic classifiers" based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
-Abstractly, naive Bayes is a conditional probability model: given a problem instance to be classified, represented by a vector
-<img src="image/1.png" alt="Formula 1" style="max-width:100%;"></p>
+<p>The open source nature of Android OS has attracted wider adoption of the system by multiple kinds of developers. This occurrence has further promoted an exponential in the number of devices running the Android OS into different sectors of the economy. Even if this progress brings some amazing technological improvements and simplicity of doing businesses and social relationships, they have however become powerful channel for the unconstrained cyberattacks and surveillance against business and the individual users of these mobile devices. Many cyberattacks techniques exist but attacks through the malicious applications have taken a jump in the recent years. Android malware has done progress in sophistications and intelligence that they have become highly immune to current detection systems. 
 
-<p>representing some n features (independent variables), it assigns to this instance probabilities
-<img src="image/2.png" alt="Formula 2" style="max-width:100%;"></p>
+Machine Learning techniques have emerged to provide more capable choice for tackling this kind of malware applications which are intelligent enough. The models created through Machine Learning algorithms work by first learning the patterns of malware behavior and then use this information to identify any such similar behavior from other applications. 
+</p>
 
-<p>The problem with the above formulation is that if the number of features n is large or if a feature can take on a large number of values, then basing such a model on probability tables is infeasible. We therefore reformulate the model to make it more tractable. Using Bayes' theorem, the conditional probability can be decomposed as
-<img src="image/3.png" alt="Formula 3" style="max-width:100%;"></p>
+<h2> :book: Project Description</h2>
+
+<p>In our project, Android Authentication prediction, our problem statement was to build a prediction model that would detect Malware Apps given it's features like Name, Package, Rating, Various Permission that it requires upon installation. Our approach was to understand the domain, clean the dataset, perform the EDA for better understanding of the dataset, try out NLP Modelling for Text Columns, build the final model, evaluate and improve accuracy and  identify the future scopes.
+
+Since we had a target class in the dataset, we went ahead with the typical methodology of solving a supervised Machine Learning Classification Problem. The first thing at hand was to clean the data by finding null values, dropping duplicates, handling outliers etc. After the cleaning, we tried out all possible visualizations for the different columns including count plots, word clouds for Text Columns, correlation plot with Target Class etc. 
+
+After performing EDA and inferring insights, we also carried out Chi-square test to identify feature importance beforehand to have an idea of what could be the most relevant features. Since our dataset had both Text Columns and numerical columns, specific emphasis on NLP was given at the beginning itself. NLP Modelling was tried out to see if Text columns alone could predict a Malware App. To our surprise, after fine tuning hyperparameters, Text columns itself gave a result of 71% accuracy using an XGBoost Model. 
+
+We were in a dilemma initially whether to include a Text column as dropping Text column would need enough reasoning and not dropping would add to complexity. Hence, we derived a new column from the NLP Model called Derived_prob_text that has predicted probabilities corresponding to a class for the whole dataset. We went ahead with two types of datasets, one with a text derived column and another one without it.
+
+After having the 2 datasets, Modelling was given importance and out of all the models that we tried: KNN, Random Forest, GBM, XGBoost, Logistic Regression; XGBoost gave better accuracy, precision and recall. Plots like AUC-ROC Curve were also generated to validate this. Also, to our surprise, models performed well with the data frame having Text Derived Column and the feature importance was also high for this column.
+
+To conclude, we were able to build a Malware App Classification Model with 89% accuracy (Text derived column increased accuracy by 8%). The future scopes and improvement of the project were also discussed in detail.
+ 
+</p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2> :clipboard: Execution Instruction</h2>
-<p>The order of execution of the program files is as follows:</p>
-<p><b>1) spam_detector.py</b></p>
-<p>First, the spam_detector.py file must be executed to define all the functions and variables required for classification operations.</p>
-<p><b>2) train.py</b></p>
-<p>Then, the train.py file must be executed, which leads to the production of the model.txt file. 
-At the beginning of this file, the spam_detector has been imported so that the functions defined in it can be used.</p>
-<p><b>3) test.py</b></p>
-<p>Finally, the test.py file must be executed to create the result.txt and evaluation.txt files.
-Just like the train.py file, at the beginning of this file, the spam_detector has been imported so that the functions defined in it can be used.</p>
+
+<p>The given IPython Notebook can be either downloaded to be run on your local Jupyter Notebook or can be directly run on Google Colab.</p>
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <!-- CREDITS -->
 <h2 id="credits"> :scroll: Credits</h2>
 
-< Your Name > | Avid Learner | Data Scientist | Machine Learning Engineer | Deep Learning enthusiast
+ Nadeeha A | Avid Learner | Data Scientist | Machine Learning Engineer | Deep Learning enthusiast
 
 <p> <i> Contact me for Data Science Project Collaborations</i></p>
 
@@ -79,24 +78,13 @@ Just like the train.py file, at the beginning of this file, the spam_detector ha
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 <h2> :books: References</h2>
 <ul>
-  <li><p>Jonathan Lee, 'Notes on Naive Bayes Classifiers for Spam Filtering'. [Online].</p>
-      <p>Available: https://courses.cs.washington.edu/courses/cse312/18sp/lectures/naive-bayes/naivebayesnotes.pdf</p>
+  <li><p>Medium.com, 'How to Develop Your XGBoost Model in Python'. [Online].</p>
+      <p>Available: https://machinelearningmastery.com/develop-first-xgboost-model-python-scikit-learn/</p>
   </li>
-  <li><p>Wikipedia.org, 'Naive Bayes Classifier'. [Online].</p>
-      <p>Available: https://en.wikipedia.org/wiki/Naive_Bayes_classifier</p>
+  <li><p>analyticsvidhya.com, 'Complete Guide to Parameter Tuning in XGBoost with codes in Python'. [Online].</p>
+      <p>Available: https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/</p>
   </li>
-  <li><p>Youtube.com, 'Naive Bayes for Spam Detection'. [Online].</p>
-      <p>Available: https://www.youtube.com/watch?v=8aZNAmWKGfs</p>
-  </li>
-  <li><p>Youtube.com, 'Text Classification Using Naive Bayes'. [Online].</p>
-      <p>Available: https://www.youtube.com/watch?v=EGKeC2S44Rs</p>
-  </li>
-  <li><p>Manisha-sirsat.blogspot.com, 'What is Confusion Matrix and Advanced Classification Metrics?'. [Online].</p>
-      <p>Available: https://manisha-sirsat.blogspot.com/2019/04/confusion-matrix.html</p>
-  </li>
-  <li><p>Pythonforengineers.com, 'Build a Spam Filter'. [Online].</p>
-      <p>Available: https://www.pythonforengineers.com/build-a-spam-filter/</p>
-  </li>
+  
 </ul>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
